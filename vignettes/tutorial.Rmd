@@ -1,0 +1,79 @@
+---
+title: "Tutorial for my_pexp"
+author: "Grace Richards"
+date: "11/18/2024"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(myPexp)
+library(testthat)
+```
+
+## Testing
+
+Without targeting corner cases, let's run a simple test of my_pexp() from simulated data.
+
+```{r}
+#First, vectorize quantile argument "x" my_pexp() so it can be tested on a vector of random variates
+#Original pexp() is already vectorized
+my_pexpV = Vectorize(my_pexp, vectorize.args = "x")
+my_pexpV(c(1,2,3))
+
+#Generate positive standard normal deviates
+#Test on each set of logical args (lower.tail = T/F, log.p = T/F)
+usethis::use_testthat() #set up unit testing
+usethis::use_test("test1") #set up test case
+test1 = abs(rnorm(100))
+test_that("my_pexp works on simple case", {
+  expect_equal(my_pexpV(test1), pexp(test1))
+  expect_equal(my_pexpV(test1, lower.tail = F), 
+               pexp(test1, lower.tail = F))
+  expect_equal(my_pexpV(test1, log.p = T), 
+               pexp(test1, log.p = T))
+  expect_equal(my_pexpV(test1, lower.tail = F, log.p = T), 
+               pexp(test1, lower.tail = F, log.p = T))
+})
+```
+
+The implementation of my_pexp is designed to retain precision of the log probability for very large values of rate * x:
+*Find val for which float reaches 15 digits?*
+
+```{r}
+#Set rate = 10, E(x) = 10, for rate*x on the order of 10^2
+usethis::use_test("test2") #set up test case
+test2 = rnorm(100, mean = 10, sd = 1)
+test_that("my_pexp works on large values", {
+  expect_equal(my_pexpV(test2, rate = 10, log.p = T), 
+               pexp(test2, rate = 10, log.p = T))
+})
+```
+
+This implementation also maintains precision of lower-tail probabilities when rate*x is very small:
+
+```{r}
+#Set rate = 1e-06, E(x) = 1e-06, for rate*x on the order of 10^-12
+usethis::use_test("test3") #set up test case
+test3 = rnorm(100, mean = 1e-06, sd = 1e-07)
+test_that("my_pexp works on large values", {
+  expect_equal(my_pexpV(test3, rate = 1e-06), pexp(test3, rate = 1e-06))
+  expect_equal(my_pexpV(test3, rate = 1e-06, log.p = T), 
+               pexp(test3, rate = 1e-06, log.p = T))
+})
+```
+
+
+## Benchmarking
+
+Let's test the efficiency of my_pexp against the pexp function in R package *stats*
+
+```{r}
+library(stats)
+library(bench)
+
+result = bench::mark(pexp(7, rate = 1), my_pexp(7, rate = 1))
+print(result)
+plot(result)
+```
+
+The *stats* function pexp() is still more efficient than my_pexp() implementation in this package. However, its performance is comparable to the existing implementation, on the same order of magnitude while retaining numerical precision.

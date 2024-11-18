@@ -1,11 +1,13 @@
 Package: myPexp
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Exponential CDF
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Grace Richards
+Maintainer: Grace Richards <grichards230@gmail.com>
+Description: Evaluates cumulative probability of exponential distribution, maintaining numerical precision for extreme values.
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.3.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
