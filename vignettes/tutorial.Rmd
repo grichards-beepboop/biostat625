@@ -37,7 +37,6 @@ test_that("my_pexp works on simple case", {
 ```
 
 The implementation of my_pexp is designed to retain precision of the log probability for very large values of rate * x:
-*Find val for which float reaches 15 digits?*
 
 ```{r}
 #Set rate = 10, E(x) = 10, for rate*x on the order of 10^2
