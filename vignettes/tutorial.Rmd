@@ -1,11 +1,20 @@
 ---
-title: "Tutorial for my_pexp"
-author: "Grace Richards"
-date: "11/18/2024"
+title: "Tutorial: myPexp"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Tutorial: myPexp}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
 library(myPexp)
 library(testthat)
 ```
@@ -66,7 +75,7 @@ This new implementation holds up in each case.
 
 Let's test the efficiency of my_pexp against the pexp function in R package *stats*
 
-```{r}
+```{r, fig.width=8, fig.height=2}
 library(stats)
 library(bench)
 

@@ -10,7 +10,7 @@
 #' @param log.p a logical value indicating whether to return
   #' the log probability (default FALSE)
 #' @return cumulative distribution function evaluated at x
-
+#' @export
 my_pexp <- function(x, rate = 1, lower.tail = TRUE, log.p = FALSE) {
   #Screen for very large values
   #For lower-tail log probability precision, use log1p()
