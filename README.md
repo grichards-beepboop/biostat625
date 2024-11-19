@@ -1,7 +1,4 @@
 ## Package: myPexp
-<!-- badges: start -->
-  [![R-CMD-check](https://github.com/grichards-beepboop/biostat625/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/grichards-beepboop/biostat625/actions/workflows/R-CMD-check.yaml)
-  <!-- badges: end -->
 #### Functions: my_pexp()
 *See help page for more info on the function*
 #### **What is the purpose of this package?**
