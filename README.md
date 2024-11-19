@@ -1,5 +1,5 @@
 ## Package: myPexp
-[![Codecov test coverage](https://codecov.io/gh/grichards-beepboop/biostat625/graph/badge.svg)](https://app.codecov.io/gh/grichards-beepboop/biostat625)
+[![R-CMD-check](https://github.com/grichards-beepboop/biostat625/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/grichards-beepboop/biostat625/actions/workflows/R-CMD-check.yaml)
 #### Functions: my_pexp()
 *See help page for more info on the function*
 #### **What is the purpose of this package?**
