@@ -12,3 +12,4 @@ This implementation functions identically to the original R function when given 
 single-value argument for x (see function documentation); that is, this implementation
 is not vectorized. Moreover, my_pexp achieves a level of efficiency that is lesser than,
 but comparable to, *stats* pexp. See 'vignettes/tutorial.Rmd' for testing and benchmarking.
+[![Codecov test coverage](https://codecov.io/gh/grichards-beepboop/biostat625/graph/badge.svg)](https://app.codecov.io/gh/grichards-beepboop/biostat625)
