@@ -1,5 +1,4 @@
 ## Package: myPexp
-[![R-CMD-check](https://github.com/grichards-beepboop/biostat625/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/grichards-beepboop/biostat625/actions/workflows/R-CMD-check.yaml)
 #### Functions: my_pexp()
 *See help page for more info on the function*
 #### **What is the purpose of this package?**
@@ -13,4 +12,3 @@ This implementation functions identically to the original R function when given 
 single-value argument for x (see function documentation); that is, this implementation
 is not vectorized. Moreover, my_pexp achieves a level of efficiency that is lesser than,
 but comparable to, *stats* pexp. See 'vignettes/tutorial.Rmd' for testing and benchmarking.
-
