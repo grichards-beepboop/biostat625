@@ -12,7 +12,7 @@ library(testthat)
 
 ## Testing
 
-Without targeting corner cases, let's run a simple test of my_pexp() from simulated data.
+Without targeting corner cases, let's run a simple test of my_pexp() from simulated data.  
 
 ```{r}
 #First, vectorize quantile argument "x" my_pexp() so it can be tested on a vector of random variates
